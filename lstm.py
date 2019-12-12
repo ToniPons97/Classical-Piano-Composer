@@ -30,10 +30,13 @@ def get_notes():
     """ Get all the notes and chords from the midi files in the ./midi_songs directory """
     notes = []
 
-    for file in glob.glob("midi_songs/*.mid"):
-        midi = converter.parse(file)
+    for file in glob.glob("midi_songs2/*.mid"):
+        try:
+            midi = converter.parse(file)
+        except:
+            print("Error while parsing", file)
 
-        print("Parsing %s" % file)
+        print(f"Parsing {file}")
 
         notes_to_parse = None
 
