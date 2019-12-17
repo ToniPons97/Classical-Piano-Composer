@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 from midi2audio import FluidSynth
 import subprocess
 from pydub import AudioSegment
@@ -24,25 +25,17 @@ def generate_wav(midi_name, sound_font):
 
 
 
-def display_soundfonts():
-    subprocess.run(["ls ~/.fluidsynth/"], shell=True)
 
 
-def display_midis():
-    subprocess.run(["ls ./midi_songs2/"], shell=True)
-
-
-def mix_wavs():
+def mix_wavs(wav_name1, wav_name2):
     """
     generate mp3 file with all wavs added.
     """
-    sound1 = AudioSegment.from_mp3("./wav_output/example1.wav")
-    sound2 = AudioSegment.from_mp3("./wav_output/example2.wav")
-    sound3 = AudioSegment.from_mp3("./wav_output/example3.wav")
-    sound4 = AudioSegment.from_mp3("./wav_output/example4.wav")
+    sound1 = AudioSegment.from_mp3(f"./wav_output/{wav_name1}")
+    sound2 = AudioSegment.from_mp3(f"./wav_output/{wav_name2}")
 
     # mix sound2 with sound1, starting at position=0 ms into sound1)
-    output = sound1.overlay(sound2).overlay(sound3).overlay(sound4)
+    output = sound1.overlay(sound2)
 
     # save the result
     output.export("./wav_output/mixed_sounds.mp3", format="mp3")
