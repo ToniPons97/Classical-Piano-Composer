@@ -53,7 +53,7 @@ def play_audio(file_name):
         print("Quit")
 
 
-generate_wav("01minuet.mid", ["Pianino.sf2", "RolandMarcatoStrings.sf2"])
+#generate_wav("01minuet.mid", ["Pianino.sf2", "RolandMarcatoStrings.sf2"])
 
 
-play_audio("01minuet.mid-Pianino.sf2.wav")
+#play_audio("01minuet.mid-Pianino.sf2.wav")
