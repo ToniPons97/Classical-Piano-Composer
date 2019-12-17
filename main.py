@@ -12,10 +12,16 @@ def generate_wav(midi_name, sound_font):
     midi_name: the name of the midi file to be converted.
     wav_name: the name of the wav file to generate.
     """
-    for i in sound_font:
-        wav_file = f"{midi_name}-{i}.wav"
-        print(f"Generating {wav_file}")
-        FluidSynth(f"~/.fluidsynth/{i}").midi_to_audio(f"./midi_songs2/{midi_name}", f"./wav_output/{wav_file}")
+    if type(sound_font) == list:
+        for i in sound_font:
+            wav_file = f"{midi_name}-{i}.wav"
+            print(f"Generating {wav_file}")
+            FluidSynth(f"~/.fluidsynth/{i}").midi_to_audio(f"./midi_songs2/{midi_name}", f"./wav_output/{wav_file}")
+    elif type(sound_font) == str:
+        FluidSynth(f"~/.fluidsynth/{sound_font}").midi_to_audio(
+            f"./midi_songs2/{midi_name}", 
+            f"./wav_output/{midi_name}-{sound_font}.wav")
+
 
 
 def display_soundfonts():
@@ -54,6 +60,9 @@ def play_audio(file_name):
 
 
 #generate_wav("01minuet.mid", ["Pianino.sf2", "RolandMarcatoStrings.sf2"])
+
+
+#generate_wav("01minuet.mid", "RolandMarcatoStrings.sf2")
 
 
 #play_audio("01minuet.mid-Pianino.sf2.wav")

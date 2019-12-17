@@ -31,19 +31,22 @@ comboSoundFonts.grid(column=1, row=1)
 comboSoundFonts.current(1)
 
 
+midi_global = ""
+sound_font_global = ""
 
 def callbackMidi(eventObject):
-    print(comboMidis.get())
-    return comboMidis.get()
+    global midi_global
+    midi_global = comboMidis.get()
 
 def callbackSoundFont(eventObject):
-    print(comboSoundFonts.get())
-    return comboSoundFonts.get()
+    global sound_font_global
+    sound_font_global = comboSoundFonts.get()
     
 
 
 def generate_wav_btn():
-    print("fuck")
+    generate_wav(midi_global, sound_font_global)
+    
 
 
 comboMidis.bind("<<ComboboxSelected>>", callbackMidi)
