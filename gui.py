@@ -73,7 +73,7 @@ btn.grid(column=0, row=2)
 btn_mix = ttk.Button(app, text="Mix", command=mix_wavs_btn)
 btn_mix.grid(column=0, row=3)
 
-btn_del = ttk.Button(app, text="Delete all files", command=delete_all_files)
+btn_del = ttk.Button(app, text="Delete all files\nFOREVER!", command=delete_all_files)
 btn_del.grid(column=1, row=2)
 
 app.mainloop()
