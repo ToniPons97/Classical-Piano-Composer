@@ -31,7 +31,7 @@ def prepare_sequences(notes, pitchnames, n_vocab):
     # map between notes and integers and back
     note_to_int = dict((note, number) for number, note in enumerate(pitchnames))
 
-    sequence_length = 500
+    sequence_length = 1000
     network_input = []
     output = []
     for i in range(0, len(notes) - sequence_length, 1):
@@ -71,7 +71,7 @@ def create_network(network_input, n_vocab):
     model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
 
     # Load the weights to each node
-    model.load_weights('weights55.hdf5')
+    model.load_weights('weights57.hdf5')
 
     return model
 
@@ -132,7 +132,7 @@ def create_midi(prediction_output):
 
     midi_stream = stream.Stream(output_notes)
 
-    midi_stream.write('midi', fp='./midi_songs2/test_output6.mid')
+    midi_stream.write('midi', fp='./midi_songs2/wheights57-3.mid')
 
 if __name__ == '__main__':
     generate()
