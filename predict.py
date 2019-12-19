@@ -13,7 +13,7 @@ from keras.layers import Activation
 def generate():
     """ Generate a piano midi file """
     #load the notes used to train the model
-    with open('./data/notes37', 'rb') as filepath:
+    with open('./data/notes', 'rb') as filepath:
         notes = pickle.load(filepath)
 
     # Get all pitch names
@@ -71,7 +71,7 @@ def create_network(network_input, n_vocab):
     model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
 
     # Load the weights to each node
-    model.load_weights('weights37.hdf5')
+    model.load_weights('weights55.hdf5')
 
     return model
 
@@ -132,7 +132,7 @@ def create_midi(prediction_output):
 
     midi_stream = stream.Stream(output_notes)
 
-    midi_stream.write('midi', fp='./midi_songs2/test_output5.mid')
+    midi_stream.write('midi', fp='./midi_songs2/test_output6.mid')
 
 if __name__ == '__main__':
     generate()
